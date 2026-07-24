@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>خانم خوشگله، قرار دیت؟</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+    <div class="card" id="mainCard">
+        <!-- صفحه اول: سوال -->
+        <div id="questionSection">
+            <h1>
+                <span class="name">خانم خوشگله</span> <br />
+                باهام میای دیت؟ ✨
+            </h1>
+
+            <div class="btn-group" id="btnGroup">
+                <button class="btn btn-yes" id="yesBtn">بله ❤️</button>
+                <button class="btn btn-no" id="noBtn">نه 🙈</button>
+            </div>
+
+            <div class="footer-emoji">💘 🌹 💌</div>
+        </div>
+
+        <!-- صفحه دوم: انتخاب تاریخ، ساعت و مکان -->
+        <div id="dateSection" style="display: none;">
+            <h2>
+                🥳 عالی! <br />
+                تاریخ، ساعت و مکان رو انتخاب کن
+            </h2>
+
+            <div class="date-picker">
+                <label for="datePicker">📅 تاریخ:</label>
+                <input type="text" id="datePicker" placeholder="مثلاً ۱۴۰۳/۰۵/۱۵" />
+                <button class="btn btn-small btn-calendar" id="showCalendarBtn">تقویم</button>
+            </div>
+
+            <div class="date-picker" style="margin-top: 1rem;">
+                <label for="timePicker">🕐 ساعت:</label>
+                <input type="time" id="timePicker" />
+            </div>
+
+            <div class="date-picker" style="margin-top: 1rem;">
+                <label for="locationPicker">📍 مکان:</label>
+                <input type="text" id="locationPicker" placeholder="مثلاً رستوران، پارک، کافه..." style="min-width: 200px;" />
+            </div>
+
+            <div style="margin-top: 1.5rem;">
+                <button class="btn btn-yes btn-small" id="confirmDateBtn">✔️ تایید</button>
+                <button class="btn btn-no btn-small" id="backBtn" style="background: #ecf0f1; color: #2c3e50;">🔙 برگشت</button>
+            </div>
+
+            <div id="resultMessage"></div>
+        </div>
+
+        <!-- پنل مدیریت با لاگین -->
+        <div id="adminLoginPanel" style="display: none;">
+            <h3>🔐 ورود به پنل مدیریت</h3>
+            <div class="login-form">
+                <div class="login-row">
+                    <label>👤 نام کاربری:</label>
+                    <input type="text" id="adminUsername" placeholder="نام کاربری" />
+                </div>
+                <div class="login-row">
+                    <label>🔑 رمز عبور:</label>
+                    <input type="password" id="adminPassword" placeholder="رمز عبور" />
+                </div>
+                <button class="btn btn-small btn-calendar" id="adminLoginBtn">ورود</button>
+                <div id="adminLoginError" style="color: #e74c6f; margin-top: 0.5rem; font-size: 0.9rem;"></div>
+            </div>
+        </div>
+
+        <!-- پنل مدیریت (بعد از لاگین) -->
+        <div id="adminPanel" style="display: none;">
+            <h3>📊 وضعیت پاسخ خانم خوشگله</h3>
+            <div id="adminStatus">
+                <div class="admin-row">
+                    <span class="admin-label">وضعیت:</span>
+                    <span class="admin-value" id="adminResponse">⏳ در انتظار پاسخ</span>
+                </div>
+                <div class="admin-row">
+                    <span class="admin-label">تاریخ انتخاب شده:</span>
+                    <span class="admin-value" id="adminDate">-</span>
+                </div>
+                <div class="admin-row">
+                    <span class="admin-label">ساعت انتخاب شده:</span>
+                    <span class="admin-value" id="adminTime">-</span>
+                </div>
+                <div class="admin-row">
+                    <span class="admin-label">مکان انتخاب شده:</span>
+                    <span class="admin-value" id="adminLocation">-</span>
+                </div>
+                <div class="admin-row">
+                    <span class="admin-label">زمان ثبت:</span>
+                    <span class="admin-value" id="adminTimestamp">-</span>
+                </div>
+            </div>
+            <button class="btn btn-small btn-close-admin" id="closeAdminBtn">🔒 خروج</button>
+        </div>
+    </div>
+
+    <!-- دکمه باز کردن پنل مدیریت -->
+    <button class="btn-admin-toggle" id="openAdminBtn">
+        🛠️ مدیریت
+    </button>
+
+    <!-- تقویم شمسی (پاپ‌آپ) -->
+    <div id="calendarModal" style="display: none;">
+        <div class="calendar-content">
+            <h3>📅 تقویم شمسی</h3>
+            <div id="jalaliCalendar"></div>
+            <button class="btn btn-small btn-close-calendar" id="closeCalendarBtn">بستن</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
